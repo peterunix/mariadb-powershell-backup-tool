@@ -1,0 +1,15 @@
+# Automatic MariaDB Incremental Backups with Powershell
+## Usage
+Edit the script and modify the variables ~DBUSER~ and ~DBPASS~ to be your database credentials.
+You can either run the script standalone or schedule it using the Windows Task Manager to have your incremental backups run
+
+#+begin_src powershell
+./PS-MariaDBBackupTool.ps1
+#+end_src
+
+## Important Note
+Only use this with InnoDB.
+If you have MyISAM the database wont backup incrementally properly.
+It'll work, but each incremental would be the same size as the initial backup.
+If you migrated from MyISAM to InnoDB, make sure to remove the MyISAM backups of the database from the mysql folder.
+The reason is the same as listed above. 
